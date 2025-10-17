@@ -1,0 +1,244 @@
+/* Variables de tema - ¡Modo Oscuro! */
+:root{
+  --bg: #1e293b; /* Fondo oscuro */
+  --card: #334155; /* Fondo de tarjeta/formulario */
+  --muted: #94a3b8; /* Texto sutil */
+  --text: #f8fafc; /* Texto claro principal */
+  --primary: #3b82f6; /* Azul primario */
+  --accent: #2563eb; /* Azul para hover */
+  --danger: #ef4444; /* Rojo para peligro */
+  --radius: 12px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.4); /* Sombra más pronunciada para el modo oscuro */
+  --glass: rgba(51, 65, 85, 0.8); /* Efecto vidrio oscuro */
+  --max-width: 620px;
+  --gap: 14px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+/* Reset ligero */
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  margin:0;
+  /* Gradiente de fondo oscuro */
+  background: linear-gradient(180deg, var(--bg), #0f172a 120%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-size:16px;
+  line-height:1.4;
+  /* Transición suave para cambios de color de fondo y texto */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Contenedor central (acepta class="Formulario" o typo clas="Formulario") */
+.Formulario,
+[clas="Formulario"] {
+  max-width: var(--max-width);
+  margin:32px auto;
+  /* Fondo con efecto 'glass' */
+  background: linear-gradient(180deg, var(--glass), var(--card));
+  backdrop-filter: blur(8px); /* Efecto de desenfoque */
+  border-radius: calc(var(--radius) + 4px);
+  padding:28px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.08); /* Borde sutil y claro */
+  /* Animación de entrada suave (opcional) */
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Cabecera */
+.Formulario h1,
+[clas="Formulario"] h1 {
+  margin:0 0 8px 0;
+  font-size:1.6rem;
+  letter-spacing: -0.02em;
+  color:var(--text);
+  transition: color 0.3s ease;
+}
+
+/* Descripción / subtítulos (si agregas) */
+.Formulario p,
+[clas="Formulario"] p {
+  margin:0 0 18px 0;
+  color:var(--muted);
+  font-size:0.95rem;
+  transition: color 0.3s ease;
+}
+
+/* Formulario en columna */
+#formDirectorio{
+  display:grid;
+  gap: var(--gap)
+}
+
+/* ===========================
+   Estilos de Inputs
+   =========================== */
+
+/* Estilo base para todos los inputs, textareas y selects */
+#formDirectorio input,
+#formDirectorio textarea,
+#formDirectorio select {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 0;
+    border: 1px solid var(--muted); /* Borde sutil */
+    border-radius: var(--radius);
+    background: #475569; /* Fondo ligeramente más claro que la tarjeta */
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.4;
+    /* Transición suave para todos los efectos */
+    transition: all 0.3s ease-in-out;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    -webkit-appearance: none; /* Reset para apariencia nativa */
+}
+
+/* Estado de Enfocado (Focus) - Más visual y atractivo */
+#formDirectorio input:focus,
+#formDirectorio textarea:focus,
+#formDirectorio select:focus {
+    outline: none; /* Quita el contorno por defecto del navegador */
+    border-color: var(--primary); /* Borde primario */
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.5); /* Anillo de enfoque vibrante */
+    background: var(--card); /* Aclara ligeramente el fondo al enfocar */
+    transform: scale(1.01); /* Zoom muy sutil al enfocar */
+}
+
+/* Indicador de error (si usas validación JS) */
+#formDirectorio input.error,
+#formDirectorio textarea.error {
+    border-color: var(--danger);
+}
+#formDirectorio input.error:focus,
+#formDirectorio textarea.error:focus {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.4);
+}
+
+/* ===========================
+   Botón de Agregar Usuario
+   =========================== */
+
+/* Estilo base del botón de envío (asumiendo que es el último en #formDirectorio) */
+#formDirectorio button[type="submit"],
+#formDirectorio .btn-agregar {
+    /* Aquí puedes usar un selector más específico si es necesario */
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--radius);
+    background: var(--primary);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    /* Transición para un efecto suave y "bouncing" */
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Interacción: Hover y Focus (el botón "salta" y la sombra se agranda) */
+#formDirectorio button[type="submit"]:hover,
+#formDirectorio button[type="submit"]:focus-visible,
+#formDirectorio .btn-agregar:hover,
+#formDirectorio .btn-agregar:focus-visible {
+    background: var(--accent);
+    transform: translateY(-4px) scale(1.02); /* Sube y agranda ligeramente */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    outline: none;
+}
+
+/* Estado al presionarse (Active) - Se "hunde" */
+#formDirectorio button[type="submit"]:active,
+#formDirectorio .btn-agregar:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    transition: all 0.1s ease; /* Transición más rápida para el 'click' */
+}
+
+
+/* ===========================
+   Lista de usuarios (tipo tabla)
+   =========================== */
+#lista {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--card);
+}
+
+#lista li {
+  display: grid;
+  grid-template-columns: 2fr 0.8fr 0.8fr; /* datos | editar | borrar */
+  align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.08); /* Separador claro sutil */
+  /* Transición para el hover */
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+#lista li:last-child {
+  border-bottom: none;
+}
+
+/* Efecto hover más interactivo */
+#lista li:hover {
+  background: #475569; /* Un color ligeramente más claro */
+  cursor: pointer;
+  transform: translateX(4px); /* Desplazamiento sutil a la derecha */
+}
+
+/* ===========================
+   Botones Editar y Borrar
+   =========================== */
+#lista button {
+  border: none;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  /* Transición para todos los cambios de botón */
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Estilos al pasar el ratón (hover) y al enfocar (focus) */
+#lista button:hover,
+#lista button:focus-visible { /* focus-visible para mejor accesibilidad */
+    transform: translateY(-2px); /* Un pequeño 'salto' */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Sombra más grande */
+}
+
+/* Botón Editar */
+#lista button:first-of-type {
+  background: var(--primary);
+  color: #fff;
+}
+#lista button:first-of-type:hover,
+#lista button:first-of-type:focus-visible {
+  background: var(--accent);
+}
+
+/* Botón Borrar */
+#lista button:last-of-type {
+  background: var(--danger);
+  color: #fff;
+}
+#lista button:last-of-type:hover,
+#lista button:last-of-type:focus-visible {
+  /* Filtro de brillo para hacerlo ligeramente más oscuro/intenso */
+  filter: brightness(1.2);
+}
